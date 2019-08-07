@@ -29,19 +29,35 @@
             </div>
 
                 <div class="below_title" style="display: flex;flex-direction: row">
-                    <input type="password" class="form-control ser" id="inputPassword" placeholder="search">
+                    <input type="password"  class="form-control ser" id="inputPassword" placeholder="search">
                     <button class="btn btn-outline-primary">Search</button>
                 </div>
 
 
 
            </div>
+        @if(isset(Auth::user()->name))
+            <a href="#" class="btn btn-outline-primary num"  style="margin-left: 30px"><span class="btn-outline-primary num_basket">2 <img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
+
+            <div class="  dropdown" style="margin-left: 110px !important;">
+                <button class="bg-light  dropdown-toggle"style="font-family: Roboto, sans-serif; border-color: #f8f9fa !important; border-bottom-color: #007bff !important; font-size: 1.09em;color: #007bff"   type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/images/user.png" width="30px" height="30px"style="margin-top: 2px;margin-bottom: 2px">
+
+                    {{Auth::user()->name}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="">Basket</a>
+                    <a class="dropdown-item" href="{{route('logout')}}" style="font-family: Roboto, sans-serif">logout</a>
+                </div>
+            </div>
+        @else
         <div class="login ">
             <a href="#" class="btn btn-outline-primary num" ><span class="btn-outline-primary num_basket">2 <img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
-            <a href="#" class="btn btn-outline-primary login_comp">Rgister</a>
+            <a href="{{asset('/register')}}" class="btn btn-outline-primary login_comp">Rgister</a>
         <a href="{{asset('/login')}}" class="btn btn-outline-primary login_comp">login</a>
 
         </div>
+            @endif
     </nav>
 </header>
 <main>

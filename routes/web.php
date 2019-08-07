@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
 Auth::routes();
-Route::get('/','')
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/',['uses'=>'indexController@index','as' =>'home']);
+Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsMiddleware'],function (){
+
+});
+
+Route::get('/home', 'indexController@home');
