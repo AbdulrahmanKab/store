@@ -1,0 +1,68 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.title{
+    margin-top: 2em;
+    margin-left: 3em;
+    font-family: 'Oswald', sans-serif;
+    color: #9E9E9E;
+}
+.conf{
+    display: flex;
+    flex-direction: row;
+}
+.word_detail{
+    margin-top: 2em;
+    font-family: 'Oswald', sans-serif;
+    margin-left: 11em;
+    color: #9E9E9E;
+}
+.detail{
+    margin-left: 3em;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+}
+.img-product{
+    border-radius: 20px;
+}
+.product_box{
+    display: flex;
+    flex-direction: row;
+    margin-left: 3em;
+}
+.detail_name{
+    font-family: Roboto,sans-serif;
+}
+.value{
+    margin-left: 1em;
+    font-family: Roboto,sans-serif;
+     width: 25em;
+}
+
+.more_details{
+    margin-left:5em;
+    margin-top: 2em;
+    margin-bottom: 0px;
+    font-size: 0.5em;
+    font-family: 'Playfair Display', serif;
+}
+.paragraph{
+    margin-left: 6em;
+    width: 60em;
+    font-family: Roboto,sans-serif;
+}
+.shoping_card{
+    height: 3em !important;
+    margin-left:6em;
+}
+.shoping_card:hover{
+    background-color: #0277BD !important;
+    border-color: #0288D1 !important;
+    color: #ffffff !important;
+}
+.shoping_inside{
+
+    font-family: Roboto,sans-serif;
+}
