@@ -19,7 +19,7 @@ Route::get('/logout','Auth\LoginController@logout')->name('logout');
 Auth::routes();
 Route::get('/',['uses'=>'indexController@index','as' =>'home']);
 Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsMiddleware'],function (){
-
+Route::get('/','cmsController@index');
 });
 
 Route::get('/home', 'indexController@home');

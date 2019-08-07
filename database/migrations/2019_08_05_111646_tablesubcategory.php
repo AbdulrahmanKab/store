@@ -13,10 +13,7 @@ class Tablesubcategory extends Migration
      */
     public function up()
     {
-        Schema::table('sub_category',function (Blueprint $table){
-            $table->foreign('lang_id')->references('id')->on('lang');
 
-        });
     }
 
     /**

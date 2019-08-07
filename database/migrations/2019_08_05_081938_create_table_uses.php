@@ -17,11 +17,9 @@ class CreateTableUses extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id');
             $table->string('value');
-            $table->unsignedInteger('lang_id');
             $table->timestamps();
             $table->integer('isdeleted')->default(0);
             $table->foreign('product_id')->references('id')->on('product');
-            $table->foreign('lang_id')->references('id')->on('lang');
         } );
     }
 

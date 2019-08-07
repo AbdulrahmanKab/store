@@ -19,8 +19,6 @@ class CreateTableLink extends Migration
            $table->string('icon',50);
            $table->string('value');
             $table->integer('isdeleted')->default(0);
-            $table->unsignedInteger('lang_id');
-            $table->foreign('lang_id')->references('id')->on('lang');
             $table->timestamps();
         });
     }

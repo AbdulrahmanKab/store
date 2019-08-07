@@ -40,7 +40,7 @@
             <a href="#" class="btn btn-outline-primary num"  style="margin-left: 30px"><span class="btn-outline-primary num_basket">2 <img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
 
             <div class="  dropdown" style="margin-left: 110px !important;">
-                <button class="bg-light  dropdown-toggle"style="font-family: Roboto, sans-serif; border-color: #f8f9fa !important; border-bottom-color: #007bff !important; font-size: 1.09em;color: #007bff"   type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="bg-light  dropdown-toggle"style="font-family: Roboto, sans-serif; border-color: #f8f9fa !important; border-bottom-color: #007bff !important; font-size: 1.07em;color: #007bff"   type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="/images/user.png" width="30px" height="30px"style="margin-top: 2px;margin-bottom: 2px">
 
                     {{Auth::user()->name}}
@@ -126,15 +126,15 @@
 
                     <ul class="list-unstyled" style="margin-left: 10px !important;">
                         <li>
-                            <img src="/image/email.png"  class="figure-img" width="35px" height="35px">
+                            <img src="/image/email.png"  class="figure-img" width="30px" height="30px">
                             <a href="#!">Email</a>
                         </li>
                         <li>
-                            <img src="/image/messenger.png"  class="figure-img" width="35px" height="35px">
+                            <img src="/image/messenger.png"  class="figure-img" width="30px" height="30px">
                             <a href="#!">Messanger</a>
                         </li>
                         <li>
-                            <img src="/image/twitter.png"  class="figure-img" width="35px" height="35px">
+                            <img src="/image/twitter.png"  class="figure-img" width="30px" height="30px">
                             <a href="#!">Messanger</a>
                         </li>
                     </ul>

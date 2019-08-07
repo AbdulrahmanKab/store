@@ -20,8 +20,6 @@ class CreateTableSublink extends Migration
             $table->string('name',50);
             $table->string('value',50);
             $table->integer('isdeleted')->default(0);
-            $table->unsignedInteger('lang_id');
-            $table->foreign('lang_id')->references('id')->on('lang');
             $table->foreign('parent_id')->references('id')->on('link');
             $table->timestamps();
         });

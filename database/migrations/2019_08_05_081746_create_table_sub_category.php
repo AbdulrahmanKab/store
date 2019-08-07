@@ -17,7 +17,6 @@ class CreateTableSubCategory extends Migration
             $table->increments('id');
             $table->string('name',50);
             $table->unsignedInteger('main_category_id');
-            $table->unsignedInteger('lang_id');
             $table->integer('isdeleted')->default(0);
             $table->timestamps();
             $table->foreign('main_category_id')->references('id')->on('main_category');
