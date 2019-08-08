@@ -5,7 +5,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="index.html">
-                <img src="../assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" /> </a>
+                <img src="/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" /> </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
             </div>
@@ -25,8 +25,8 @@
 
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle" src="../assets/layouts/layout/img/avatar3_small.jpg" />
-                        <span class="username username-hide-on-mobile"> Nick </span>
+                        <img alt="" class="img-circle" src="/assets/layouts/layout/img/avatar3_small.jpg" />
+                        <span class="username username-hide-on-mobile"> {{Auth::user()->name}} </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">

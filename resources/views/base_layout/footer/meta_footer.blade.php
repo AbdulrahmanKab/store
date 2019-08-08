@@ -13,6 +13,7 @@
 <script src="/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
 <script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 <script>
     $(document).ready(function()

@@ -13,12 +13,7 @@ class Tableproduct extends Migration
      */
     public function up()
     {
-        Schema::table('product',function (Blueprint $table){
-            $table->unsignedInteger('uses_id');
-            $table->foreign('uses_id')->references('id')->on('uses');
 
-
-        });
 
     }
 

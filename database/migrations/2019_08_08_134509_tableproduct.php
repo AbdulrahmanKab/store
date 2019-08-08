@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Tableorders extends Migration
+class Tableproduct extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class Tableorders extends Migration
      */
     public function up()
     {
-        Schema::table('orders',function (Blueprint $table){
-            $table->string('paymant_type');
+        Schema::table('product',function (Blueprint $table){
+           $table->text('description');
         });
     }
 

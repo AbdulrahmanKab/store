@@ -2,7 +2,7 @@
 @section('content')
    <form>
     <div class="row">
-        <div class="form-group last">
+        <div class="form-group ">
             <div class="col-md-9 pull-right ">
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
@@ -19,13 +19,23 @@
 
 
         </div>
+
         </div>
-        <div class="form-group">
-            <label for="name">name</label>
-            <input type="email" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted"><?php //$errors->first('name')?></small>
+        <div >
 
         </div>
     </div>
+           <div  style="display: flex; flex-direction: row;margin-top: 2em">
+               <label style="font-family: Roboto, sans-serif" >
+                   <span class="alert"style="font-size: 1.1em;">Name of Product</span>
+                   <input name="name" placeholder="enter name of product" style="margin-left: 20px !important; width: 30em ;height: 3em" ></label>
+           </div>
+
+       <div  style="display: flex; flex-direction: row;margin-top: 2em">
+           <label style="font-family: Roboto, sans-serif" >
+               <span class="alert"style="font-size: 1.1em;">Price</span>
+               <input name="price" placeholder="price" style="margin-left: 7.2em !important; width: 10em ;height: 3em" ><span style="font-size: 1.1em; font-weight: bold;">$$</span></label>
+       </div>
+
    </form>
 @endsection

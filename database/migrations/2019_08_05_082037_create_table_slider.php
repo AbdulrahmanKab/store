@@ -15,12 +15,10 @@ class CreateTableSlider extends Migration
     {
        Schema::create('slider',function (Blueprint $table){
            $table->increments('id');
-           $table->unsignedInteger('product_id');
            $table->integer('status');
            $table->string('image',150);
            $table->integer('isdeleted')->default(0);
            $table->timestamps();
-           $table->foreign('product_id')->references('id')->on('product');
        });
     }
 

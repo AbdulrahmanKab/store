@@ -1,18 +1,18 @@
 <head>
     <meta charset="utf-8" />
     @yield('css')
-    <title>{{Route::currentRouteAction()}}</title>
+    <title>Control Panel</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Preview page of Metronic Admin RTL Theme #1 for blank page layout" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet">    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
+    <link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css">
     <link href="/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <link rel="shortcut icon" href="{{asset('images/cms.png')}}" /> </head>
 <!-- END HEAD -->
 @if(app()->getLocale() =='ar')
     <link href="/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
