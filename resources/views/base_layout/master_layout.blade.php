@@ -39,7 +39,7 @@
                         <span class="title">{{$link->name}}</span>
                         <span class="arrow"></span>
                     </a>
-                       <?php $subLinks = \DB::table('sub_link')->leftjoin('link','parent_id','=','link.id')->where('parent_id','=',$link->id)->get(['sub_link.name','sub_link.icon','sub_link.value'])?>
+                       <?php $subLinks = \DB::table('sub_link')->leftjoin('link','parent_id','=','link.id')->where('parent_id','=',$link->id)->select(['sub_link.name','sub_link.icon','sub_link.value'])->get()?>
 
                     <ul class="sub-menu">
                         @foreach($subLinks as $subLink)
