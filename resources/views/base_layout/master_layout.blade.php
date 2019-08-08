@@ -30,38 +30,30 @@
                     </form>
                     <!-- END RESPONSIVE QUICK SEARCH FORM -->
                 </li>
+                <?php $links =\DB::table('link')->select('*')->get();?>
+
+                @foreach($links as $link)
                 <li class="nav-item start ">
                     <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">Dashboard</span>
+                        <i class="{{$link->icon}}"></i>
+                        <span class="title">{{$link->name}}</span>
                         <span class="arrow"></span>
                     </a>
+                       <?php $subLinks = \DB::table('sub_link')->leftjoin('link','parent_id','=','link.id')->where('parent_id','=',$link->id)->get(['sub_link.name','sub_link.icon','sub_link.value'])?>
+
                     <ul class="sub-menu">
-                        <li class="nav-item start ">
+                        @foreach($subLinks as $subLink)
+                           <li class="nav-item start ">
                             <a href="index.html" class="nav-link ">
-                                <i class="icon-bar-chart"></i>
-                                <span class="title">Dashboard 1</span>
+                                <i class="{{$subLink->icon}}"></i>
+                                <span class="title">{{$subLink->name}}</span>
                             </a>
                         </li>
-                        <li class="nav-item start ">
-                            <a href="dashboard_2.html" class="nav-link ">
-                                <i class="icon-bulb"></i>
-                                <span class="title">Dashboard 2</span>
-                                <span class="badge badge-success">1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item start ">
-                            <a href="dashboard_3.html" class="nav-link ">
-                                <i class="icon-graph"></i>
-                                <span class="title">Dashboard 3</span>
-                                <span class="badge badge-danger">5</span>
-                            </a>
-                        </li>
+                            @endforeach
                     </ul>
                 </li>
-                <li class="heading">
-                    <h3 class="uppercase">Features</h3>
-                </li>
+                @endforeach
+
 
             </ul>
             <!-- END SIDEBAR MENU -->
@@ -77,22 +69,7 @@
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
 
-            <div class="page-bar">
-                <ul class="page-breadcrumb">
-                    <li>
-                        <a href="index.html">Home</a>
-                        <i class="fa fa-circle"></i>
-                    </li>
-                    <li>
-                        <a href="#">Blank Page</a>
-                        <i class="fa fa-circle"></i>
-                    </li>
-                    <li>
-                        <span>Page Layouts</span>
-                    </li>
-                </ul>
 
-            </div>
       @yield("content")
         </div>
         <!-- END CONTENT BODY -->
