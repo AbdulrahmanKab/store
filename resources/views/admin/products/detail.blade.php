@@ -1,6 +1,18 @@
+<?php $productName = app('request')->input('productName') ?>
+@if(!isset($productName))
+    <script>
+
+        window.location.href = '{{route("products.add")}}';
+
+    </script>
+@endif
 @extends("base_layout.master_layout")
 @section("content")
-    <form>
+    <div class="alert alert-success" role="alert">
+        This is a details for {{$productName}} product
+    </div>
+    <?php $id = \DB::table('product')->where('name','=',$productName)->select(['id'])->get()?>
+    <form action="/">
         <div  style="display: flex; flex-direction: row;margin-top: 2em;">
         <label style="font-family: Roboto, sans-serif" >
             <span class="alert"style="font-size: 1.1em;">Detail</span>

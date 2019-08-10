@@ -1,7 +1,8 @@
 
 @extends("base_layout.master_layout")
 @section('content')
-   <form method="post" action="/control/admin/product/add/" enctype="multipart/form-data">
+   <form method="post" action="{{route('products.detail')}}" enctype="multipart/form-data">
+
        @csrf
     <div class="row">
         <div class="form-group ">
@@ -18,8 +19,11 @@
                         <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                     </div>
                 </div>
-
-
+                @if($errors->has('image'))
+                <div class="alert alert-danger" role="alert">
+                   {{$errors->first('image')}}
+                </div>
+@endif
         </div>
 
         </div>
@@ -43,6 +47,11 @@
                <span class="alert"style="font-size: 1.1em;">Price</span>
                <input name="price" placeholder="price" style="margin-left: 7.2em !important; width: 10em ;height: 3em" ><span style="font-size: 1.1em; font-weight: bold;">$$</span></label>
        </div>
+       @if($errors->has('price'))
+           <div class="alert alert-danger" role="alert">
+               {{$errors->first('price')}}
+           </div>
+       @endif
        <div  style="display: flex; flex-direction: row;margin-top: 2em">
            <label style="font-family: Roboto, sans-serif" >
                <span class="alert"style="font-size: 1.1em;">Marka</span>
