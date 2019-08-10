@@ -21,7 +21,7 @@ Route::get('/',['uses'=>'indexController@index','as' =>'home']);
 Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsMiddleware'],function (){
     Route::get('/','cmsController@index');
     Route::get('/products/add',['uses'=>'admin\productsController@create','as'=>'products.add']);
-    Route::post('/products/add',['uses'=>'admin\productsController@store','as'=>'products.store']);
+    Route::post('/products/add/{name}',['uses'=>'admin\productsController@detail','as'=>'products.detail']);
 
 
 });

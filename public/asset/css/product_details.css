@@ -33,9 +33,11 @@
     margin-left: 3em;
 }
 .detail_name{
+    font-size: 1.1em;
     font-family: Roboto,sans-serif;
 }
 .value{
+    font-size: 1.1em;
     margin-left: 1em;
     font-family: Roboto,sans-serif;
      width: 25em;
@@ -55,7 +57,7 @@
 }
 .shoping_card{
     height: 3em !important;
-    margin-left:6em;
+    margin-left: -5em !important; ;
 }
 .shoping_card:hover{
     background-color: #0277BD !important;

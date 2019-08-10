@@ -55,10 +55,7 @@
                 <div class="detail_name">detail_name</div>
                 <div class="value"> value</div>
             </div>
-            <div class="product_box">
-                <div class="detail_name">detail_name</div>
-                <div class="value"> value</div>
-            </div>
+
         </div>
     </div>
     @if(Auth::user() != null)

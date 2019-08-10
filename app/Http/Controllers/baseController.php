@@ -11,4 +11,11 @@ class baseController extends Controller
         $this->currentUser = \Auth::User();
         \View::share([ 'currentUser' => $this->currentUser ]);
     }
+    public function uploadImage($image ,$dir ="/images"){
+        $imageName = time().".".$image->getClientOriginalExtension();
+        $direct=public_path($dir);
+        $image->move($direct,$imageName);
+        $imagePath = $dir."/".$imageName;
+        return $imagePath;
+    }
 }
