@@ -1,3 +1,4 @@
+
 @extends("layout._layout")
 @section('css')
     <link href="/asset/css/product_details.css" rel="stylesheet" type="text/css">
@@ -10,11 +11,15 @@
 </div>
 <div class="conf">
     <div class="detail">
-        <img src="/image/prdouct.png" alt="product image " width="250px" height="250px" class="img-product">
+        <img src="/image/prdouct.png" alt="product image "
+        @if(Auth::user() !== null)
+        width="360px"
+        @endif
+             width="250px" height="250px" class="img-product">
 
         <div class="container"><div class="product_box">
             <div class="detail_name">Detail_name</div>
-            <div class="value"> ValueValueValueValueValueValueValueValueValueValueValue</div>
+            <div class="value"> VValueValueValueValueVddalueValue</div>
 
 
             </div>
@@ -34,6 +39,18 @@
             <div class="detail_name">detail_name</div>
             <div class="value"> value</div>
         </div>
+            <div class="product_box">
+                <div class="detail_name">detail_name</div>
+                <div class="value"> value</div>
+            </div>
+            <div class="product_box">
+                <div class="detail_name">detail_name</div>
+                <div class="value"> value</div>
+            </div>
+            <div class="product_box">
+                <div class="detail_name">detail_name</div>
+                <div class="value"> value</div>
+            </div>
             <div class="product_box">
                 <div class="detail_name">detail_name</div>
                 <div class="value"> value</div>
@@ -44,7 +61,12 @@
             </div>
         </div>
     </div>
-    <a href="#" class="btn btn-danger btn-lg shoping_card"    >
+    @if(Auth::user() != null)
+        <?php $style = " margin-left:1em"?>
+        @else
+        <?php  $style=""?>
+        @endif
+    <a href="#" class="btn btn-danger btn-lg shoping_card"    style="{{$style}}">
         <span class="glyphicon glyphicon-shopping-cart" >
             <img src="/image/shopping-basket.png " width="30px" height="30px">
             <span class="shoping_inside">Add to Basket</span></span>

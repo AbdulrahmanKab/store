@@ -13,4 +13,7 @@ class indexController extends baseController
         echo "you are logging in";
         echo "<script>setTimeout(\"location.href = '/';\",1000);</script>";
     }
+    public function product(){
+        return view('product_details');
+    }
 }

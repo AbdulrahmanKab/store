@@ -20,8 +20,11 @@ Auth::routes();
 Route::get('/',['uses'=>'indexController@index','as' =>'home']);
 Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsMiddleware'],function (){
     Route::get('/','cmsController@index');
-    Route::get('/products/add',['uses'=>'productsController@create','as'=>'products.add']);
+    Route::get('/products/add',['uses'=>'admin\productsController@create','as'=>'products.add']);
+    Route::post('/products/add',['uses'=>'admin\productsController@store','as'=>'products.store']);
+
 
 });
+Route::get('/product','indexController@product');
 
 Route::get('/home', 'indexController@home');
