@@ -6,12 +6,22 @@
 
     </script>
 @endif
+<?php $nameProduct = \DB::table('product')->where('name','like',"$productName")->get()?>
+
+    @if(!isset($nameProduct->first()->name))
+        <script>
+
+            window.location.href = '{{route("products.add")}}';
+
+        </script>
+    @endif
+<?php //$name= $nameProduct->first()->name?>
 @extends("base_layout.master_layout")
 @section("content")
     <div class="alert alert-success" role="alert">
         This is a details for {{$productName}} product
     </div>
-    <?php $id = \DB::table('product')->where('name','=',$productName)->select(['id'])->get()?>
+
     <form action="/">
         <div  style="display: flex; flex-direction: row;margin-top: 2em;">
         <label style="font-family: Roboto, sans-serif" >
