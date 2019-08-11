@@ -7,8 +7,8 @@
     </script>
 @endif
 <?php $nameProduct = \DB::table('product')->where('name','like',"$productName")->get()?>
-
-    @if(!isset($nameProduct->first()->name))
+<?php  $n = $nameProduct->first();?>
+    @if(!isset($n->name))
         <script>
 
             window.location.href = '{{route("products.add")}}';
@@ -22,7 +22,9 @@
         This is a details for {{$productName}} product
     </div>
 
-    <form action="/">
+    <form action="{{route('products.store')}}" method="post" >
+        @csrf
+<input type="text"  value="{{$n->id}}" style="display: none;" name="id">
         <div  style="display: flex; flex-direction: row;margin-top: 2em;">
         <label style="font-family: Roboto, sans-serif" >
             <span class="alert"style="font-size: 1.1em;">Detail</span>
@@ -135,6 +137,6 @@
 
             <input name="detail32" placeholder="value" style="margin-left: 6.6em !important; width: 20em ;height: 3em" ></label>
         </div>
-
+<button type="submit" class="btn btn-success " style="margin-left: 20em;margin-top: 2em ;font-size: 1.5em">Submit</button>
     </form>
     @endsection

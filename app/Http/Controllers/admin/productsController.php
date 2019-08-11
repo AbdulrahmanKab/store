@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use  App\Http\Controllers\baseController;
 use App\products;
 use App\lang;
+use App\uses;
 class productsController extends baseController
 {
     //
@@ -19,9 +20,43 @@ class productsController extends baseController
  return view('admin.products.detail');
     }
 
-    public function store(){
+    public function store(Request $request){
+    //  1 2 5 6 9 10 13 14 17 18 21 22 25 26 29 30
+        // 3 4  7 8 11 12 15 16 19 20 23 24 27 28 31 32
+       $id= $request->input('id');
+       $s =$request->all();
 
+        for ($i =1 ;$i<32;$i+=3){
 
+            $uses = new uses();
+        $uses->name =$s["detail$i"];
+           ++$i;
+
+            $uses->value=  $s["detail$i"];
+            $uses->product_id= $id;
+            $uses->save();
+
+        }
+        for ($r =1 ;$r<=32;$r++){
+
+            $lang = new lang();
+            $lang->name =$s["detail$r"];
+            $lang->lang ="en";
+            $r++;
+            $lang->value=  $s["detail$r"];
+
+            $lang->save();
+                ++$r;
+            $lang1 = new lang();
+            $lang1->name =$s["detail$r"];
+            $lang1->lang ="ar";
+            ++$r;
+
+            $lang1->value=  $s["detail$r"];
+
+            $lang1->save();
+
+        }
     }
     public  function detail(Request $request){
        // image name  price marka category description empty
