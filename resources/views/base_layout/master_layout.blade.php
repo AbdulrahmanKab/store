@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{app()->getLocale()}}" dir="{{app()->getLocale() =='ar' ?'rtl':'ltr'}}">
 @includeIf('base_layout.header.meta_header')
@@ -68,7 +69,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
-
+@includeIf('base_layout.msg')
 
       @yield("content")
         </div>

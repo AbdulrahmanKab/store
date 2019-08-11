@@ -38,7 +38,9 @@ class productsController extends baseController
 
         }
         for ($r =1 ;$r<=32;$r++){
-
+            if ($s["detail$r"] ==null){
+                continue;
+            }
             $lang = new lang();
             $lang->name =$s["detail$r"];
             $lang->lang ="en";
@@ -47,7 +49,10 @@ class productsController extends baseController
 
             $lang->save();
                 ++$r;
-            $lang1 = new lang();
+            if ($s["detail$r"] ==null){
+                continue;
+            }
+                $lang1 = new lang();
             $lang1->name =$s["detail$r"];
             $lang1->lang ="ar";
             ++$r;
@@ -57,6 +62,8 @@ class productsController extends baseController
             $lang1->save();
 
         }
+        \Session::flash("msg","s: added successfully");
+        return redirect()->route("products.add");
     }
     public  function detail(Request $request){
        // image name  price marka category description empty
