@@ -24,7 +24,11 @@ Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsM
     Route::post('/products/add/',['uses'=>'admin\productsController@detail','as'=>'products.detail']);
     Route::get('/products/add/product_detail',['uses'=>'admin\productsController@create_detail','as'=>'products.add_detail']);
     Route::post('/products/add/product_detail',['uses'=>'admin\productsController@store','as'=>'products.store']);
-
+    Route::get('/slider/add',['uses'=>'admin\sliderController@create','as'=>'slider.add']);
+    Route::post('/slider/add',['uses'=>'admin\sliderController@store','as'=>'slider.store']);
+    Route::get('/slider',['uses'=>'admin\sliderController@index','as'=>'slider.index']);
+    Route::get("/slider/edite/{id}","admin\sliderController@edite");
+    Route::put("/slider/{id}","admin\sliderController@update");
 });
 Route::get('/product','indexController@product');
 
