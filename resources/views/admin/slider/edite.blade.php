@@ -9,7 +9,7 @@
                 <div class="col-md-9 pull-right ">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                            <img src="{{$slider->image}}" alt="" /> </div>
                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                         <div>
                                                             <span class="btn default btn-file">
@@ -34,18 +34,13 @@
         <div  style="display: flex; flex-direction: row;margin-top: 2em">
             <label style="font-family: Roboto, sans-serif" >
                 <span class="alert"style="font-size: 1.1em;">Name of Product</span>
-                <input name="name" placeholder="enter name of product" style="margin-left: 20px !important; width: 30em ;height: 3em" ></label>
+                <input name="name" placeholder="enter name of product" style="margin-left: 20px !important; width: 30em ;height: 3em"  value="{{$slider->product_name}}"></label>
         </div>
-        @if($errors->has('image'))
-            <div class="alert alert-danger" role="alert">
-                {{$errors->first('name')}}
-            </div>
-        @endif
 
         <div  style="display: flex; flex-direction: row;margin-top: 2em;">
             <label style="font-family: Roboto, sans-serif" >
                 <span class="alert"style="font-size: 1.1em;">acive?</span>
-                <input name="status"  type="checkbox" placeholder="name of marka"  value="1" style="margin-left: -4.7em !important; width: 20em ;height: 1.2em" ></label>
+                <input name="status"  type="checkbox" placeholder="name of marka" <?php echo $slider->status==1? "checked":""?> value="1" style="margin-left: -4.7em !important; width: 20em ;height: 1.2em" ></label>
         </div>
 
         <button type="submit" class="btn btn-success " style="margin-left: 15em;margin-top: 2em ;font-size: 1.5em">Submit</button>
