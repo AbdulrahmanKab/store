@@ -28,7 +28,8 @@ Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsM
     Route::post('/slider/add',['uses'=>'admin\sliderController@store','as'=>'slider.store']);
     Route::get('/slider',['uses'=>'admin\sliderController@index','as'=>'slider.index']);
     Route::get("/slider/edite/{id}","admin\sliderController@edite");
-    Route::put("/slider/{id}","admin\sliderController@update");
+    Route::put("/slider/{id}",['uses'=>"admin\sliderController@update",'as'=>'slider.update']);
+    Route::post("/slider/{id}/destroy",['uses'=>"admin\sliderController@destroy",'as'=>'slider.delete']);
 });
 Route::get('/product','indexController@product');
 

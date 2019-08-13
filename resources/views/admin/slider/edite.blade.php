@@ -1,8 +1,8 @@
 
 @extends("base_layout.master_layout")
 @section('content')
-    <form method="post" action="{{route('slider.store')}}" enctype="multipart/form-data">
-
+    <form method="post" action="/control/admin/slider/{{$slider->id}}" enctype="multipart/form-data">
+<input type="hidden" name="_method" value="put">
         @csrf
         <div class="row">
             <div class="form-group ">
@@ -36,7 +36,11 @@
                 <span class="alert"style="font-size: 1.1em;">Name of Product</span>
                 <input name="name" placeholder="enter name of product" style="margin-left: 20px !important; width: 30em ;height: 3em"  value="{{$slider->product_name}}"></label>
         </div>
-
+        @if($errors->has('name'))
+            <div class="alert alert-danger" role="alert">
+                {{$errors->first('name')}}
+            </div>
+        @endif
         <div  style="display: flex; flex-direction: row;margin-top: 2em;">
             <label style="font-family: Roboto, sans-serif" >
                 <span class="alert"style="font-size: 1.1em;">acive?</span>
