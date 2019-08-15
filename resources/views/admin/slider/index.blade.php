@@ -1,31 +1,36 @@
 
 @extends("base_layout.master_layout")
 @section('content')
+    <form>
     <div class="row">
     <div class="col-md-6">
         <a href="{{route('slider.add')}}">
-        <div class="btn-group">
-            <button id="sample_editable_1_2_new" class="btn sbold green"> Add New
+        <div class="btn-group btn sbold green">
+            Add New
                 <i class="fa fa-plus"></i>
-            </button>
+
         </div>
         </a>
     </div>
     </div>
     <div class="row">
         <div class="col-md-5">
-            <input type="text" class="input-group" style="width: 30em !important; margin-top: 1.5em !important;margin-bottom: 1.5em !important;" name="search_name" placeholder="enter search ">
-            <div class="dropdown-toggle">
-            <select class="dropdown-menu">
-                <option></option>
-            </select>
-            </div>
+            <input type="text" value="{{app('request')->input('search_name')}}" class="input-group" style="height: 2.2em !important;width: 30em !important; margin-top: 1.5em !important;margin-bottom: 1.5em !important;" name="search_name" placeholder="enter search ">
+
         </div>
-        <div class="col-md-1" style="width: 30em !important; margin-top: 1.5em !important;margin-bottom: 1.5em !important;">
-           <button class="btn btn-sm green dropdown-toggle "type="submit">Search</button>
+        <div class=" col-md-2 dropdown-toggle"  style="height: 2.2em !important; margin-top: 1.6em !important;margin-bottom: 1.5em !important;">
+            <select class="" name="active">
+                <option value="-1" >select option</option>
+                <option value="1" {{app('request')->input('active') == '1'?"selected":""}}>Active</option>
+                <option value="0" {{app('request')->input('active') == '0'?"selected":""}}>Inactive</option>
+            </select>
+        </div>
+        <div class="col-md-1" style="height: 2.2em !important; margin-top: 1.5em !important;margin-bottom: 1.5em !important;">
+           <button class="btn btn-sm green dropdown-toggle " type="submit">Search</button>
 
         </div>
     </div>
+    </form>
     <div class="portlet-body flip-scroll" style="font-family: Roboto,Sans-Serif">
         <table class="table table-bordered table-striped table-condensed flip-content">
             <thead class="flip-content">
@@ -51,6 +56,7 @@
             </tbody>
         </table>
     </div>
+    {{$slider->links()}}
     @endsection
 @section('js')
     <script>

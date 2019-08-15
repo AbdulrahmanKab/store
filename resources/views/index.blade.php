@@ -1,3 +1,4 @@
+
 @extends("layout._layout")
 @section('content')
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -8,27 +9,23 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/l8p1aWZqHvE/1920x1080')">
+            <div class="carousel-item active" style="background-image: url({{$slider->first()->image}})">
                 <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">First Slide</h2>
-                    <p class="lead">This is a description for the first slide.</p>
+                    <h2 class="display-4">{{$slider->first()->main_title}}</h2>
+                    <p class="lead">{{$slider->first()->description}}</p>
                 </div>
             </div>
             <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('https://source.unsplash.com/s7nlaF3kefg/1920x1080')">
+            <?php for($i =1;$i <=$slider->count()-1;$i++){?>
+            <div class="carousel-item" style="background-image: url({{$slider[$i]->image}})">
                 <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">Second Slide</h2>
-                    <p class="lead">This is a description for the second slide.</p>
+                    <h2 class="display-4">{{$slider[$i]->main_title}}</h2>
+                    <p class="lead">{{$slider[$i]->description}}</p>
                 </div>
             </div>
+        <?php }?>
             <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('https://source.unsplash.com/7LNatQYMzm4/1920x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">Third Slide</h2>
-                    <p class="lead">This is a description for the third slide.</p>
-                </div>
-            </div>
-        </div>
+
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>

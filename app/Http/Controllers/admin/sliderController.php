@@ -12,9 +12,16 @@ use Session;
 
 class sliderController extends baseController
 {
-    public function index(){
+    public function index(Request $request){
         $slider = new slider();
-        $slider = $slider->where('isdeleted','=',0)->get();
+        $slider = $slider->where('isdeleted','=',0);
+        if ($request->input('search_name') !=null ){
+            $slider = $slider->where('product_name','=',$request->input('search_name'));
+        }
+       if ($request->input('active') != null && $request->input('active') != "-1" ){
+            $slider = $slider->where('status','=',$request->input('active'));
+        }
+       $slider = $slider->paginate(20)->appends(['search_name'=>$request->input('search_name'),'acitve'=>$request->input("active")]);
         return view('admin.slider.index',compact('slider'));
     }
 
@@ -28,23 +35,25 @@ class sliderController extends baseController
         $slider->image =parent::uploadImage($request->file('image'));
         $slider->status =$request->input('status')== 1?1:0;
         $slider->product_name =$request->input('name');
+        $slider->main_title =$request->input('main');
+        $slider->description =$request->input('description');
         $slider->save();
         \Session::flash('msg',"s: slider added successfully");
         return redirect()->route("slider.add");
     }
     public function rules($id =null){
         if ($id == null) {
-            $array = ['image' => 'required|mimes:png,jpg'];
+
             $array['name'] = 'required|unique:slider,product_name';
         }else{
-            $array = ['image' => 'mimes:png,jpg'];
+
             $array['name'] = "required|unique:slider,product_name,$id";
         }
         return $array;
     }
     public function messages($id =null){
 
-        return['image.mimes'=>'must be image png or jpg','name.unique'=>'name already exist'];
+        return['name.unique'=>'name already exist'];
     }
     public function edite($id){
         try {
@@ -70,6 +79,8 @@ class sliderController extends baseController
 
     $slider->status = $request->input('status') == 1 ? 1 : 0;
     $slider->product_name = $request->input('name');
+            $slider->main_title =$request->input('main');
+            $slider->description =$request->input('description');
     $slider->update();
     \Session::flash('msg', "s: slider updated successfully");
     return redirect()->route("slider.index");
