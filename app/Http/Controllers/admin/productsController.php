@@ -71,7 +71,7 @@ class productsController extends baseController
         $products = new products();
             $name= $request->input('name');
         $products->name= $name;
-        $products->image = parent::uploadImage($request->file('image'),'images/');
+        $products->image = parent::uploadImage($request->file('image'),'images');
         $products->price =$request->input('price');
         $products->marka =$request->input('marka');
         $products->sub_categoroy_id = $request->input('category');
@@ -92,9 +92,9 @@ class productsController extends baseController
 
     }
     public function rules(){
-        return['image'=>'required|mimes:png,jpg','price'=>'required|Numeric'];
+        return['price'=>'required|Numeric'];
     }
     public function messages(){
-        return['image.mimes'=>'must be image png or jpg','price'=>'must be number'];
+        return['price'=>'must be number'];
     }
 }

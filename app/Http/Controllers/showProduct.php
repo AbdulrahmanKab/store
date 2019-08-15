@@ -13,11 +13,11 @@ public function main($main){
 
     $product = \DB::table('product')
         ->leftjoin('sub_category','product.sub_categoroy_id','sub_category.id')
-        ->leftjoin('main_category','sub_category.main_category_id','main_category.id')->where('main_category.name','=',$main);
-
+        ->leftjoin('main_category','sub_category.main_category_id','main_category.id')->where('main_category.name','=',$main)->get();
+        dd($product);
   if ($item->isEmpty() ){
         return view('notfound');
     }
-  return view('category',compact('item','main'));
+  return view('category',compact('item','main','product'));
 }
 }
