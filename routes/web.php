@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 Auth::routes();
 Route::get('/',['uses'=>'indexController@index','as' =>'home']);
@@ -33,4 +29,7 @@ Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsM
 });
 Route::get('/product','indexController@product');
 
-Route::get('/home', 'indexController@home');
+Route::group(["prefix"=>'/{main}'],function (){
+    Route::get('/','showProduct@main');
+});
+
