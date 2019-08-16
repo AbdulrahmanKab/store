@@ -31,5 +31,8 @@ Route::get('/product','indexController@product');
 
 Route::group(["prefix"=>'/{main}'],function (){
     Route::get('/','showProduct@main');
+    Route::get('/{sub}','showProduct@sub');
+    Route::get('/{sub}/{product}','showProduct@product');
 });
+
 

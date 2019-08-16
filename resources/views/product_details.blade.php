@@ -6,12 +6,13 @@
 @endsection
 @section('content')
 <div class="main">
-    <div class="title">Category-NameProduct</div>
+    <div class="title">{{ucfirst($sub)}}-{{ucfirst($product)}}</div>
     <div class="word_detail"> Details</div>
 </div>
 <div class="conf">
+
     <div class="detail">
-        <img src="/image/prdouct.png" alt="product image "
+        <img src="/thumb.php?src=./{{$item_product->image}}&size=266x250" alt="product image "
         @if(Auth::user() !== null)
         width="360px"
         @endif
