@@ -8,7 +8,7 @@
         <ul id="sortable" class="list-group">
             <li class="list-group-item active">{{ucfirst($main)}}</li>
             @foreach($item as $i)
-            <li class="list-group-item ">{{$i->sub_name}}</li>
+            <li class="list-group-item "><a href="{{$main.'/'.$i->sub_name}}">{{$i->sub_name}}</a></li>
         @endforeach
         </ul>
     </div>
@@ -29,7 +29,7 @@
                      <a href="#"><img class="card-img-top" src="{{asset($p->image)}}" alt=""></a>
                      <div class="card-body">
                          <h4 class="card-title">
-                             <a href="#">{{$p->name}}</a>
+                             <a href="{{asset($p->main_name."/".$p->sub_name."/".$p->name)}}">{{$p->name}}</a>
                          </h4>
                          <h5>{{$p->price}}$</h5>
                          <p class="card-text">{{substr($p->description,0,110)}}</p>

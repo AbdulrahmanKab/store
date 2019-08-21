@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: row;
     margin-left: 3em;
+    margin-top: 0.4em;
 }
 .detail_name{
     font-size: 1.1em;
@@ -44,15 +45,17 @@
 }
 
 .more_details{
-    margin-left:5em;
+    margin-left:4em;
     margin-top: 2em;
     margin-bottom: 0px;
-    font-size: 0.5em;
+    font-size: 0.6em;
     font-family: 'Playfair Display', serif;
 }
 .paragraph{
-    margin-left: 6em;
+    margin-left: 5em;
     width: 60em;
+    font-size: 1.2em;
+    margin-top: 1.3em;
     font-family: Roboto,sans-serif;
 }
 .shoping_card{

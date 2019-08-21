@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/product/{id}/{amount}/{user_id}','showProduct@addBasket');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 Auth::routes();
+
 Route::get('/',['uses'=>'indexController@index','as' =>'home']);
 Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsMiddleware'],function (){
     Route::get('/','cmsController@index');
@@ -27,12 +28,13 @@ Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsM
     Route::put("/slider/{id}",['uses'=>"admin\sliderController@update",'as'=>'slider.update']);
     Route::post("/slider/{id}/destroy",['uses'=>"admin\sliderController@destroy",'as'=>'slider.delete']);
 });
-Route::get('/product','indexController@product');
+Route::get('/home','indexController@home');
 
 Route::group(["prefix"=>'/{main}'],function (){
     Route::get('/','showProduct@main');
     Route::get('/{sub}','showProduct@sub');
     Route::get('/{sub}/{product}','showProduct@product');
 });
+
 
 

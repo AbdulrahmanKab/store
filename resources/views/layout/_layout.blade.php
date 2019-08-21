@@ -15,18 +15,22 @@
 </head>
 <body>
 <header>
+    <?php $main_category = \DB::table("main_category")->get()?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand  title_name" href="#">Laravel Store</a>
+        <a class="navbar-brand  title_name" href="{{asset('/')}}">Laravel Store</a>
            <div class="title_main">
                <div class="top_title" >
-                <div class="top_title_comp" ><a href="#">Home</a></div>
-                <div class="top_title_comp"><a href="#">Mobile</a></div>
+                <div class="top_title_comp" ><a href="/">Home</a></div>
+            @foreach($main_category as $m)
+                       <div class="top_title_comp"><a href="/{{$m->name}}">{{$m->name}}</a></div>
+                @endforeach
+              <!--  <div class="top_title_comp"><a href="#">Mobile</a></div>
                 <div class="top_title_comp"><a href="#">Sport</a></div>
                 <div class="top_title_comp"><a href="#"> Book shop</a></div>
                    <div class="top_title_comp"><a href="#">Tools</a></div>
                    <div class="top_title_comp"><a href="#">Mother and Baby</a></div>
                 <div class="top_title_comp"><a href="#"> Home Tools</a></div>
-                   <div class="top_title_comp"><a href="#">Baby games</a></div>
+                   <div class="top_title_comp"><a href="#">Baby games</a></div>-->
             </div>
 
                 <div class="below_title" style="display: flex;flex-direction: row">
@@ -37,8 +41,15 @@
 
 
            </div>
+
         @if(isset(Auth::user()->name))
-            <a href="#" class="btn btn-outline-primary num"  style="margin-left: 30px"><span class="btn-outline-primary num_basket">2 <img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
+        <?php  $user_id = \DB::table('users')->where('name','=',Auth::user()->name)->select('id')->first()->id;
+            $count = \DB::table('basket')->where('user_id','=',$user_id)->count()?>
+            <a  class="btn btn-outline-primary num"  style="margin-left: 30px">
+                <span class="btn-outline-primary num_basket" id="count">
+                    <span id="set_count">{{$count}}</span> <img  src="/image/shopping-cart.png" width="35px" height="35px">
+                </span>
+            </a>
 
             <div class="  dropdown" style="margin-left: 110px !important;">
                 <button class="bg-light  dropdown-toggle"style="font-family: Roboto, sans-serif; border-color: #f8f9fa !important; border-bottom-color: #007bff !important; font-size: 1.07em;color: #007bff"   type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +64,7 @@
             </div>
         @else
         <div class="login ">
-            <a href="#" class="btn btn-outline-primary num" ><span class="btn-outline-primary num_basket">2 <img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
+            <a href="#" class="btn btn-outline-primary num" ><span class="btn-outline-primary num_basket"> <img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
             <a href="{{asset('/register')}}" class="btn btn-outline-primary login_comp">Rgister</a>
         <a href="{{asset('/login')}}" class="btn btn-outline-primary login_comp">login</a>
 
@@ -160,7 +171,57 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="/asset/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+@if(isset(Auth::user()->name))
+<?php $user_id = \DB::table('users')->where('name','=',Auth::user()->name)->select('id')->first()->id;?>
 
+<script>
+    $(".add_to_card").click(function () {
+
+        let amount = document.getElementById("amount").value;
+        let product_id =document.getElementById("product_id").value;
+        let id = '{{$user_id}}';
+        let i = '{{$count}}';
+        i++;
+        console.log(i)
+        let loc ='/product/'+product_id+'/'+amount+'/'+id;
+        $.ajax({
+            url: loc,
+            method:'GET',
+            data:{
+                'body':'',
+                '_token':'{{csrf_token()}}'}
+        }).success(function (response){
+            let item = document.getElementById('set_count');
+            item.parentNode.removeChild(item);
+            var node = document.createElement("span");                 // Create a <li> node
+            var textnode = document.createTextNode(response.count);         // Create a text node
+            node.appendChild(textnode);
+            node.setAttribute("id", "set_count");
+            let id = document.getElementById("count");
+           id.prepend(node)
+
+        });
+
+    });
+    @endif
+  /*  $(".delete-trash").click(function () {
+        let id = $(this).data('value');
+
+        let loc = '/control/admin/slider/'+id+"/destroy";
+        $.ajax({
+            url: loc,
+            method:'POST',
+            data:{
+                'body':'',
+                '_token':'{{csrf_token()}}'}
+        }).success(function (response) {
+            swal(''+response.msg)
+        })
+    })*/
+</script>
 @yield("js")
 </body>
 </html>
