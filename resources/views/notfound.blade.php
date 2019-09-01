@@ -8,3 +8,6 @@
     </div>
 
     @endsection
+@section("js")
+    <script > setTimeout("location.href ='/'     ",10000);</script>
+    @endsection

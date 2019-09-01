@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\sub_category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\main_category;
@@ -51,7 +52,15 @@ public function sub($main,$sub){
     return view('sub_category',compact('item','sub','main','product'));
 }
 public function product($main,$sub,$product){
+    $main = \DB::table('main_category')->where('name','=',$main)->get();
 
+    if($main->isEmpty()){
+        return view('notfound');
+    }
+    $subCategory = \DB::table('sub_category')->where('name','=',$sub)->get();
+    if($subCategory->isEmpty()){
+        return view('notfound');
+    }
     $item_product = \DB::table('product')->where('isdeleted','=',0)
         ->where('product.name','=',$product)
     ->select(['name','description','marka','price','image','id']);
