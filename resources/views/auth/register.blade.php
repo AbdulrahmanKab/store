@@ -64,7 +64,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">phone</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="phone" required>
+                                <input id="password-confirm" type="text" class="form-control" name="phone" required>
                             </div>
                         </div>
 

@@ -45,7 +45,7 @@
         @if(isset(Auth::user()->name))
         <?php  $user_id = \DB::table('users')->where('name','=',Auth::user()->name)->select('id')->first()->id;
             $count = \DB::table('basket')->where('user_id','=',$user_id)->count()?>
-            <a  class="btn btn-outline-primary num"  style="margin-left: 30px">
+                <a  class="btn btn-outline-primary num"  style="margin-left: 30px" href="{{route('basket')}}">
                 <span class="btn-outline-primary num_basket" id="count">
                     <span id="set_count">{{$count}}</span> <img  src="/image/shopping-cart.png" width="35px" height="35px">
                 </span>

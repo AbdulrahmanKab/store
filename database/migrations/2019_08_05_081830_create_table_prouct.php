@@ -22,6 +22,7 @@ class CreateTableProuct extends Migration
            $table->unsignedInteger('sub_categoroy_id');
            $table->integer('isempty')->default(0);
            $table->integer('isdeleted')->default(0);
+           $table->text('description');
            $table->timestamps();
 
        });

@@ -30,7 +30,6 @@ class sliderController extends baseController
     }
     public function store(Request $request){
         $request->validate($this->rules(),$this->messages());
-
         $slider = new slider();
         $slider->image =parent::uploadImage($request->file('image'));
         $slider->status =$request->input('status')== 1?1:0;

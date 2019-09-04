@@ -14,7 +14,7 @@ class AddDescribtionSlider extends Migration
     public function up()
     {
         Schema::table('slider',function (Blueprint $table){
-            $table->string('main title',50);
+            $table->string('main_title',50);
             $table->string('description',50);
         });
     }

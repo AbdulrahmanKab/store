@@ -13,7 +13,7 @@
 Route::get('/product/{id}/{amount}/{user_id}','showProduct@addBasket');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 Auth::routes();
-
+Route::get('/basket',["uses"=>'basketController@index','as'=>'basket']);
 Route::get('/',['uses'=>'indexController@index','as' =>'home']);
 Route::group(['prefix'=>'/control/admin','middleware'=>'App\Http\Middleware\cmsMiddleware'],function (){
     Route::get('/','cmsController@index');
