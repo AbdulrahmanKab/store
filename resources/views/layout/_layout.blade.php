@@ -58,13 +58,13 @@
                     {{Auth::user()->name}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="">Basket</a>
+                    <a class="dropdown-item" href="/basket">Basket</a>
                     <a class="dropdown-item" href="{{route('logout')}}" style="font-family: Roboto, sans-serif">logout</a>
                 </div>
             </div>
         @else
         <div class="login ">
-            <a href="#" class="btn btn-outline-primary num" ><span class="btn-outline-primary num_basket"> <img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
+            <a href="/basket" class="btn btn-outline-primary num" ><span class="btn-outline-primary num_basket"> 0<img  src="/image/shopping-cart.png" width="35px" height="35px"></span></a>
             <a href="{{asset('/register')}}" class="btn btn-outline-primary login_comp">Rgister</a>
         <a href="{{asset('/login')}}" class="btn btn-outline-primary login_comp">login</a>
 
@@ -207,20 +207,7 @@
 
     });
     @endif
-  /*  $(".delete-trash").click(function () {
-        let id = $(this).data('value');
 
-        let loc = '/control/admin/slider/'+id+"/destroy";
-        $.ajax({
-            url: loc,
-            method:'POST',
-            data:{
-                'body':'',
-                '_token':'{{csrf_token()}}'}
-        }).success(function (response) {
-            swal(''+response.msg)
-        })
-    })*/
 </script>
 @yield("js")
 </body>
