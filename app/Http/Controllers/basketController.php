@@ -21,6 +21,7 @@ class basketController extends baseController
         $item = \DB::table('basket')
             ->leftjoin('users', "basket.user_id", "users.id")->leftjoin('product', "basket.product_id", "product.id")
             ->where("user_id", '=', $id->id)
+            ->where("basket.isdeleted",'='.'0')
             ->select(['product.image as image'
                     , 'product.name as name'
                     , 'product.price as price'
@@ -34,6 +35,8 @@ class basketController extends baseController
     public function destroy($id){
 try {
     $basket = basket::findOrFail($id);
+    $basket->isdeleted = 1 ;
+    $basket->update();
 }catch (ModelNotFoundException $exception){
 
 }}
